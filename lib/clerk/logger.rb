@@ -35,7 +35,7 @@ module Clerk::Logger
   end
 
   included do
-    has_many :log_items, :as => :logable
+    has_many :log_items, :as => :logable, :class_name => 'Clerk::Log'
   end
 end
 
