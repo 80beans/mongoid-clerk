@@ -46,7 +46,9 @@ example model:
 
     end
 
+## Testing
 
+Start foreman and run the tests with `rake` 
 
 ## Contributing
 
