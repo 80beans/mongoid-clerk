@@ -2,6 +2,8 @@
 
 [![Build Status](https://secure.travis-ci.org/80beans/mongoid-clerk.png?branch=master)](http://travis-ci.org/80beans/mongoid-clerk)
 
+[![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/80beans/mongoid-clerk)
+
 A simple logger for Mongoid.
 
 ## Installation
