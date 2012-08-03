@@ -10,7 +10,7 @@ A simple logger for Mongoid.
 
 Add this line to your application's Gemfile:
 
-    gem 'mongoid-clerk'
+    gem 'mongoid-clerk', :require => 'clerk'
 
 And then execute:
 
