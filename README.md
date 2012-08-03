@@ -1,5 +1,7 @@
 # Mongoid::Clerk
 
+[![Build Status](https://secure.travis-ci.org/80beans/mongoid-clerk.png?branch=master)](http://travis-ci.org/80beans/mongoid-clerk)
+
 A simple logger for Mongoid.
 
 ## Installation
