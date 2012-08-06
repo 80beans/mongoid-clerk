@@ -16,7 +16,7 @@ class InheritedMongoidDocumentWithClerk < MongoidDocumentWithClerk
 end
 
 class InheritedOverriddenMongoidDocumentWithClerk < MongoidDocumentWithClerk
-  clerk_always_include :phone => :tel
+  clerk_always_include :phone => :tel, :_id => :other_field
 end
 
 describe MongoidDocumentWithClerk do
@@ -118,7 +118,28 @@ describe InheritedOverriddenMongoidDocumentWithClerk do
     subject { InheritedOverriddenMongoidDocumentWithClerk.default_fields }
 
     it "should contain the field mapping with additions" do
-      should == {:name => :name, :address => :place, :phone => :tel}
+      should == {:name => :name, :address => :place, :phone => :tel, :_id => :other_field}
+    end
+
+  end
+
+  describe "#log" do
+    let(:document_with_clerk) { InheritedOverriddenMongoidDocumentWithClerk.new(:name => 'James Bond', :address => 'Secret', :phone => '123') }
+
+    context "with default values" do
+
+      it "should call Clerk::Log with the correct params" do
+        document_with_clerk.log_items.should_receive(:create!).with(
+          :name => 'James Bond',
+          :place => 'Secret',
+          :tel => '123',
+          :other_field => document_with_clerk.id,
+          :message => 'bananas',
+          :level => :info
+        )
+      end
+
+      after { document_with_clerk.log('bananas') }
     end
 
   end

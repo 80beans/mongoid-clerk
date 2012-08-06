@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    mongoid-clerk (0.0.3)
+    mongoid-clerk (0.0.4)
       activesupport
       bson_ext
       foreman
