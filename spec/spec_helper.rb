@@ -8,7 +8,6 @@ require 'mongoid'
 require 'uri'
 require 'mongoid-rspec'
 
-
 mongoid_config = YAML.load_file(File.join(File.dirname(__FILE__),"mongoid.yml"))['test']
 
 Mongoid.configure do |config|

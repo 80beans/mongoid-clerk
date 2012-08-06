@@ -23,7 +23,7 @@ module Clerk::Logger
   end
 
   def log(msg, level = :info)
-    Clerk::Log.create!(
+    log_items.create!(
       included_fields.merge(
         :message => msg,
         :level => level

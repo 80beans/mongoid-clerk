@@ -69,7 +69,7 @@ describe MongoidDocumentWithClerk do
     context "with default values" do
 
       it "should call Clerk::Log with the correct params" do
-        Clerk::Log.should_receive(:create!).with(
+        document_with_clerk.log_items.should_receive(:create!).with(
           :name => 'James Bond',
           :place => 'Secret',
           :message => 'bananas',
@@ -83,7 +83,7 @@ describe MongoidDocumentWithClerk do
     context "with overriden status level" do
 
       it "should call Clerk::Log with the correct params" do
-        Clerk::Log.should_receive(:create!).with(
+        document_with_clerk.log_items.should_receive(:create!).with(
           :name => 'James Bond',
           :place => 'Secret',
           :message => 'bananas',
