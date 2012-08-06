@@ -6,9 +6,17 @@ class MongoidDocumentWithClerk
 
   field :name
   field :address
+  field :phone
 
   clerk_always_include :name, :address => :place
 
+end
+
+class InheritedMongoidDocumentWithClerk < MongoidDocumentWithClerk
+end
+
+class InheritedOverriddenMongoidDocumentWithClerk < MongoidDocumentWithClerk
+  clerk_always_include :phone => :tel
 end
 
 describe MongoidDocumentWithClerk do
@@ -84,6 +92,33 @@ describe MongoidDocumentWithClerk do
       end
 
       after { document_with_clerk.log('bananas', :error) }
+    end
+
+  end
+
+end
+
+describe InheritedMongoidDocumentWithClerk do
+
+  describe "inherited default fields" do
+    subject { InheritedMongoidDocumentWithClerk.default_fields }
+
+    it "should contain the field mapping" do
+      should == {:name => :name, :address => :place}
+    end
+
+  end
+
+end
+
+
+describe InheritedOverriddenMongoidDocumentWithClerk do
+
+  describe "inherited default fields" do
+    subject { InheritedOverriddenMongoidDocumentWithClerk.default_fields }
+
+    it "should contain the field mapping with additions" do
+      should == {:name => :name, :address => :place, :phone => :tel}
     end
 
   end

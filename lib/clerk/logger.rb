@@ -4,7 +4,12 @@ module Clerk::Logger
   module ClassMethods
 
     def default_fields
-      @default_fields ||= {}
+      @default_fields ||=
+        if superclass.respond_to?(:default_fields)
+          superclass.default_fields.dup
+        else
+          {}
+        end
     end
 
     def clerk_always_include(*new_default_fields)
